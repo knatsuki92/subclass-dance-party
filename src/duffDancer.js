@@ -1,6 +1,10 @@
-var BlinkyDancer = function(top, left, timeBetweenSteps){
+var DuffDancer = function(top, left, timeBetweenSteps){
 
   Dancer.call(this, top, left, timeBetweenSteps);
+  this.$node.addClass('duff');
+  this.$node.addClass('grow');
+  this.$node.addClass('grow-scale');
+
 
 
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
@@ -10,8 +14,8 @@ var BlinkyDancer = function(top, left, timeBetweenSteps){
 
 };
 
-BlinkyDancer.prototype= Object.create(Dancer.prototype);
-BlinkyDancer.prototype.constructor = BlinkyDancer;
+DuffDancer.prototype= Object.create(Dancer.prototype);
+DuffDancer.prototype.constructor = DuffDancer;
 
 // BlinkyDancer.prototype.step = function(){
 //   // call the old version of step at the beginning of any call to this new version of step
@@ -23,10 +27,13 @@ BlinkyDancer.prototype.constructor = BlinkyDancer;
 //   // other effects you can use on a jQuery-wrapped html tag.
 // };
 
-  BlinkyDancer.prototype.step = function(){
+  DuffDancer.prototype.step = function(){
     // the basic dancer doesn't do anything interesting at all on each step,
     // it just schedules the next step
-    //setTimeout(this.step.bind(this), this.timeBetweenSteps);
     Dancer.prototype.step.call(this);
-    this.$node.toggle();
+    this.$node.toggleClass("grow-scale");
   };
+
+  //DuffDancer.prototype.glow = function(){
+
+  //};

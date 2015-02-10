@@ -25,3 +25,38 @@ body, a:link, a:visited, a:active{
   border-radius:10px;
   position:absolute;
 }
+
+.homer {
+  background-image: url("img/homer-walking.jpg");
+  width: 150px;
+  height: 150px;
+
+}
+
+.drunk-homer-right {
+  background-image: url("img/drunk-homer-right.jpg");
+  width: 150px;
+  height: 150px;
+}
+
+.drunk-homer-left {
+  background-image: url("img/drunk-homer-left.jpg");
+  width: 150px;
+  height: 150px;
+}
+
+
+.duff {
+  background-image: url("img/Duff.png");
+  width: 150px;
+  height: 150px;
+
+}
+
+.grow {
+  transition: all 0.7s ease-in-out;
+}
+
+.grow-scale {
+  transform: scale(1.2);
+}

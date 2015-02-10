@@ -1,4 +1,4 @@
-var BlinkyDancer = function(top, left, timeBetweenSteps){
+var Figh = function(top, left, timeBetweenSteps){
 
   Dancer.call(this, top, left, timeBetweenSteps);
 
@@ -10,8 +10,8 @@ var BlinkyDancer = function(top, left, timeBetweenSteps){
 
 };
 
-BlinkyDancer.prototype= Object.create(Dancer.prototype);
-BlinkyDancer.prototype.constructor = BlinkyDancer;
+newDancer.prototype= Object.create(Dancer.prototype);
+newDancer.prototype.constructor = newDancer;
 
 // BlinkyDancer.prototype.step = function(){
 //   // call the old version of step at the beginning of any call to this new version of step
@@ -23,10 +23,9 @@ BlinkyDancer.prototype.constructor = BlinkyDancer;
 //   // other effects you can use on a jQuery-wrapped html tag.
 // };
 
-  BlinkyDancer.prototype.step = function(){
+  newDancer.prototype.step = function(){
     // the basic dancer doesn't do anything interesting at all on each step,
     // it just schedules the next step
-    //setTimeout(this.step.bind(this), this.timeBetweenSteps);
-    Dancer.prototype.step.call(this);
-    this.$node.toggle();
+    setTimeout(this.step.bind(this), this.timeBetweenSteps);
+    this.$node.slideToggle();
   };

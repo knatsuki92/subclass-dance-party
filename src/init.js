@@ -1,5 +1,7 @@
 $(document).ready(function(){
   window.dancers = [];
+  window.homerDancers = [];
+  window.duffDancers = [];
 
   $(".addDancerButton").on("click", function(event){
     /* This function sets up the click handlers for the create-dancer
@@ -22,24 +24,47 @@ $(document).ready(function(){
 
     // make a dancer with a random position
 
+    var timeStep;
+    if(dancerMakerFunctionName === "HomerDancer"){
+      timeStep = 250;
+    } else if(dancerMakerFunctionName === "DuffDancer"){
+      timeStep = 500;
+    }
+
     var dancer = new dancerMakerFunction(
       $("body").height() * Math.random(),
       $("body").width() * Math.random(),
-      Math.random() * 1000
+      // Math.random() * 1000
+      timeStep
     );
     $('body').append(dancer.$node);
     window.dancers.push(dancer);
 
+    if (dancer instanceof HomerDancer) {
+      window.homerDancers.push(dancer);
+    }
+
+    if (dancer instanceof DuffDancer) {
+      window.duffDancers.push(dancer);
+      $(".duff").on("mouseover", function(event){
+        console.log('test');
+      });
+
+    }
+
   });
 
    $(".lineup").on("click", function(event){
-    var spacer = 100;
+    var spacer = 20;
     var xPosition = $("body").width()/2
     for (var i = 0; i < window.dancers.length; i++) {
       window.dancers[i].lineUp(spacer, xPosition);
-      spacer *= 2;
+      spacer += 50;
     }
    });
+
+
+
 
 });
 

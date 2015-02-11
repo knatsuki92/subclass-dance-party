@@ -21,35 +21,35 @@ body, a:link, a:visited, a:active{
   background-color: #777;
 }
 .dancer{
-  border:10px solid red;
+  /*border:10px solid red;*/
   border-radius:10px;
   position:absolute;
 }
 
 .homer {
   background-image: url("img/homer-walking.jpg");
-  width: 150px;
-  height: 150px;
+  width: 94px;
+  height: 160px;
 
 }
 
 .drunk-homer-right {
   background-image: url("img/drunk-homer-right.jpg");
-  width: 150px;
-  height: 150px;
+  width: 109px;
+  height: 160px;
 }
 
 .drunk-homer-left {
   background-image: url("img/drunk-homer-left.jpg");
-  width: 150px;
-  height: 150px;
+  width: 109px;
+  height: 160px;
 }
 
 
 .duff {
   background-image: url("img/Duff.png");
-  width: 150px;
-  height: 150px;
+  width: 59px;
+  height: 109px;
 
 }
 
@@ -59,4 +59,8 @@ body, a:link, a:visited, a:active{
 
 .grow-scale {
   transform: scale(1.2);
+}
+
+.rotate {
+  transform:rotate(15deg);
 }

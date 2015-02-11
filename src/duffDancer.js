@@ -4,6 +4,7 @@ var DuffDancer = function(top, left, timeBetweenSteps){
   this.$node.addClass('duff');
   this.$node.addClass('grow');
   this.$node.addClass('grow-scale');
+  // this.spin();
 
 
 
@@ -31,7 +32,17 @@ DuffDancer.prototype.constructor = DuffDancer;
     // the basic dancer doesn't do anything interesting at all on each step,
     // it just schedules the next step
     Dancer.prototype.step.call(this);
+    this.grow();
+    this.spin;
+  };
+
+  DuffDancer.prototype.grow = function(){
     this.$node.toggleClass("grow-scale");
+  };
+
+
+  DuffDancer.prototype.spin = function () {
+    this.$node.toggleClass("rotate");
   };
 
   //DuffDancer.prototype.glow = function(){

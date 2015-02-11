@@ -1,7 +1,8 @@
 var HomerDancer = function(top, left, timeBetweenSteps){
-
+  this._freezeDist = 100;
   Dancer.call(this, top, left, timeBetweenSteps);
   this.$node.addClass('homer');
+  this.nearestDuffDist = undefined;
 
 
 
@@ -32,9 +33,19 @@ HomerDancer.prototype.constructor = HomerDancer;
     //this.$node.fadeToggle();
     //this.$node.toggleClass("grow-scale");
     this.soberDance();
+
+
+    this.nearestDuffDist = this.nearestDuff();
+
+    this.drunkDance();
+
   };
 
   HomerDancer.prototype.soberDance = function(){
+
+    if ( this.nearestDuffDist < this._freezeDist) {
+      return;
+    }
 
     var moveVertical = (Math.random() > .5) ? true : false;
     if(moveVertical){
@@ -52,7 +63,39 @@ HomerDancer.prototype.constructor = HomerDancer;
 
   };
 
+  HomerDancer.prototype.nearestDuff = function () {
+    var duffCans = window.duffDancers;
+
+    if (duffCans.length === 0) {
+      return undefined;
+    }
+
+    var calcDistance = function (dancer1, dancer2) {
+
+     return Math.sqrt(Math.pow(dancer2.top - dancer1.top, 2) + Math.pow(dancer2.left - dancer1.left, 2));
+
+    };
+
+    var minDistance = calcDistance(this, duffCans[0]); //initalize the function
+    for (var i = 1; i < duffCans.length; i++) {
+      if (minDistance > calcDistance(this, duffCans[i])) {
+        minDistance = calcDistance(this, duffCans[i]);
+      }
+    }
+    return minDistance;
+
+  };
+
   HomerDancer.prototype.drunkDance = function(){
-    this.$node.addClass('drunk-homer');
-  }
+
+    if (this.nearestDuffDist === undefined || this.nearestDuffDist > this._freezeDist) {
+      return;
+    }
+
+    this.$node.addClass('drunk-homer-right');
+    this.$node.toggleClass('drunk-homer-left');
+
+  };
+
+
 

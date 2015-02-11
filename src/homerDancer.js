@@ -47,6 +47,9 @@ HomerDancer.prototype.constructor = HomerDancer;
       return;
     }
 
+    this.$node.removeClass('drunk-homer-right');
+    this.$node.removeClass('drunk-homer-left');
+
     var moveVertical = (Math.random() > .5) ? true : false;
     if(moveVertical){
       var Yrand = (Math.random() > .5) ? 1 : -1;

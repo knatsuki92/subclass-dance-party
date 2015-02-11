@@ -22,7 +22,17 @@ $(document).ready(function(){
     // get the maker function for the kind of dancer we're supposed to make
     var dancerMakerFunction = window[dancerMakerFunctionName];
 
-    // make a dancer with a random position
+    var xPos = $("body").width() * Math.random();
+    xPos = Math.max(xPos, 100);
+    xPos = Math.min(xPos, $("body").width()-100);
+
+    var yPos = $("body").height() * Math.random();
+    yPos = Math.max(yPos, 100);
+    yPos = Math.min(yPos, $("body").width()-100);
+
+
+    //var yPos = Math.max(200,Math.min($("body").height()-200, $("body").height() * Math.random()));
+    //var xPos = Math.max(200,Math.min($("body").width()-200, $("body").width() * Math.random()));
 
     var timeStep;
     if(dancerMakerFunctionName === "HomerDancer"){
@@ -32,9 +42,8 @@ $(document).ready(function(){
     }
 
     var dancer = new dancerMakerFunction(
-      $("body").height() * Math.random(),
-      $("body").width() * Math.random(),
-      // Math.random() * 1000
+      yPos,
+      xPos,
       timeStep
     );
     $('body').append(dancer.$node);
@@ -46,8 +55,8 @@ $(document).ready(function(){
 
     if (dancer instanceof DuffDancer) {
       window.duffDancers.push(dancer);
-      $(".duff").on("mouseover", function(event){
-        console.log('test');
+      dancer.$node.on("mouseover", function(event){
+        dancer.spin();
       });
 
     }
@@ -56,7 +65,7 @@ $(document).ready(function(){
 
    $(".lineup").on("click", function(event){
     var spacer = 20;
-    var xPosition = $("body").width()/2
+    var xPosition = $("body").width()/2;
     for (var i = 0; i < window.dancers.length; i++) {
       window.dancers[i].lineUp(spacer, xPosition);
       spacer += 50;

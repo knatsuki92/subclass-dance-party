@@ -27,7 +27,7 @@ var Dancer = function(top, left, timeBetweenSteps){
       top: top,
       left: left
     };
-    this.$node.css(styleSettings);
+    this.$node.animate(styleSettings);
   };
 
   Dancer.prototype.lineUp = function(top,left){

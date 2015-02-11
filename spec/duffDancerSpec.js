@@ -13,11 +13,21 @@ describe("duffDancer", function() {
     expect(duffDancer.$node).to.be.an.instanceof(jQuery);
   });
 
-  it("should have a step function that makes its node blink", function() {
-    sinon.spy(duffDancer.$node, 'toggle');
-    duffDancer.step();
-    expect(duffDancer.$node.toggle.called).to.be.true;
+  it("should be an instance of Dancer class", function(){
+   expect(duffDancer).to.be.an.instanceof(Dancer);
   });
+
+  it("should have a step function that makes it grow", function() {
+    sinon.spy(duffDancer.$node, 'toggleClass');
+    duffDancer.step();
+    expect(duffDancer.$node.toggleClass.called).to.be.true;
+  });
+  it("should have a spin function that makes it rotate upside down", function() {
+    sinon.spy(duffDancer.$node, 'toggleClass');
+    duffDancer.spin();
+    expect(duffDancer.$node.toggleClass.called).to.be.true;
+  });
+
 
   describe("dance", function(){
     it("should call step at least once per second", function(){
@@ -31,5 +41,6 @@ describe("duffDancer", function() {
       clock.tick(timeBetweenSteps);
       expect(duffDancer.step.callCount).to.be.equal(2);
     });
+
   });
 });

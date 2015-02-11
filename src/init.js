@@ -72,6 +72,41 @@ $(document).ready(function(){
     }
    });
 
+  $(".spiral").on("click", function(event){
+  // spiral
+    var radius = 0;
+    var pheta = 0;
+    var xMid = $("body").width()/2;
+    var yMid = $("body").height()/2;
+    var xPos, yPos;
+    for (var i = 0; i < window.dancers.length; i++) {
+      xPos = xMid + radius*Math.cos(pheta);
+      yPos = yMid + radius*Math.sin(pheta);
+      window.duffDancers[i].lineUp(yPos, xPos);
+      radius = radius + 15;
+      pheta = pheta +.125*Math.PI;
+    }
+
+});
+
+    $(".circle").on("click", function(event){
+  // spiral
+    var radius = 375;
+    var pheta = 0;
+    var xMid = $("body").width()/2;
+    var yMid = $("body").height()/2;
+    var xPos, yPos;
+    for (var i = 0; i < window.dancers.length; i++) {
+      xPos = xMid + radius*Math.cos(pheta);
+      yPos = yMid + radius*Math.sin(pheta);
+      window.duffDancers[i].lineUp(yPos, xPos);
+      pheta = pheta +.125*Math.PI;
+    }
+
+});
+
+
+
 
 
 
